@@ -1,7 +1,7 @@
 // 子弹与方块碰撞检测线程
 import java.util.List;
 
-public class BulletBlockCollisionThread extends Thread {
+public class BulletBlockCollisionThread implements Runnable {
     private List<Bullet> bullets;
     private List<Block> blocks;
     private int panel_X;

@@ -11,8 +11,6 @@ public class Bullet {
     private boolean isActive; //子弹是否存活
 
 
-    private double lastX, lastY;
-
     public Bullet(double x, double y, double direction_X, double direction_Y) {
         this.x = x;
         this.y = y;
@@ -22,8 +20,7 @@ public class Bullet {
     }
     // 子弹移动
     public void update() {
-        lastX = x;
-        lastY = y;
+
         x += direction_X * speed;
         y += direction_Y * speed;
         hitBoundary();
@@ -44,7 +41,7 @@ public class Bullet {
             direction_Y = -direction_Y;
         }
     }
-    
+
     // 子弹击中方块后的反弹
     // hitPoint为0时，水平速度不变，垂直速度不变
     // hitPoint为1、2时，水平速度反转，垂直速度不变
@@ -74,8 +71,7 @@ public class Bullet {
     public double getX() { return x; }
     public double getY() { return y; }
     public int getSize() { return size; }
-    public double getLastX() { return lastX; }
-    public double getLastY() { return lastY; }
+
 
     // 根据碰撞点，调整子弹位置
     public void correctPosition(int hitPoint, Block block, int panel_X, int panel_Y) {

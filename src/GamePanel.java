@@ -54,18 +54,7 @@ public class GamePanel extends JPanel implements KeyListener {
         }).start();
         
         // 启动子弹与方块碰撞检测线程（只启动一次）
-        new Thread(() -> {
-            while (true) {
-                if (running) {
-                    bulletBlockCollisionThread.run();
-                }
-                try {
-                    Thread.sleep(10);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        }).start();
+        new Thread(bulletBlockCollisionThread).start();
 
         // 启动游戏结束检测线程（只启动一次）
         new Thread(() -> {
