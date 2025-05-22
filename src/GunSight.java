@@ -1,8 +1,9 @@
+// 瞄准线线程
 public class GunSight implements Runnable {
     private boolean running = true;
-    private double direction_X = 0;
-    private double change_value = 0.01;
-    private double change_direction = 1;
+    private double direction_X = 0;// 初始瞄准方向（垂直）
+    private double change_value = 0.01;// 瞄准线摆动速度
+    private double change_direction = 1;// 瞄准线摆动方向
 
 
     public GunSight() {}
@@ -22,7 +23,9 @@ public class GunSight implements Runnable {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+            // 改变瞄准方向
             direction_X += change_value * change_direction;
+            // 改变摆动方向
             if (direction_X >= 1) {
                 change_direction = -1;
             } else if (direction_X <= -1) {

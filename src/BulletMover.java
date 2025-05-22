@@ -1,5 +1,6 @@
+// 子弹移动线程
+
 import java.util.List;
-// 弹幕移动和碰撞检测线程
 class BulletMover implements Runnable {
     private boolean running = false;
     private List<Bullet> bullets;

@@ -1,3 +1,5 @@
+// 计时器类线程
+
 import java.awt.Color;
 import java.awt.Graphics;
 

@@ -1,3 +1,4 @@
+// 分数类
 import java.awt.Graphics;
 import java.awt.Color;
 

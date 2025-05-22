@@ -1,3 +1,5 @@
+// 射击点类
+
 import java.awt.*;
 import java.awt.event.*;
 
@@ -12,7 +14,7 @@ public class ShotingSpot {
         this.x = x;
         this.y = y;
         gunSight = new GunSight();
-        new Thread(gunSight).start();
+        new Thread(gunSight).start(); // 启动瞄准线线程
     }
 
     public void draw(Graphics g) {

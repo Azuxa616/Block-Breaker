@@ -1,14 +1,15 @@
+// 子弹类
+
 import java.awt.*;
 
 public class Bullet {
-    private double x, y;
-    private int size = 10;
-    private int speed = 6;
-    private double direction_X;
-    private double direction_Y;
-    private boolean isActive;
+    private double x, y; //子弹坐标
+    private int size = 10; //子弹大小
+    private int speed = 6; //子弹速度
+    private double direction_X; //子弹X方向
+    private double direction_Y; //子弹Y方向
+    private boolean isActive; //子弹是否存活
 
-    private int HP=200;
 
     private double lastX, lastY;
 
@@ -26,10 +27,6 @@ public class Bullet {
         x += direction_X * speed;
         y += direction_Y * speed;
         hitBoundary();
-        if(HP<=0){
-            isActive = false;
-            
-        }
     }
 
     public void draw(Graphics g) {
@@ -38,7 +35,7 @@ public class Bullet {
             g.fillOval((int)x, (int)y, size, size);
         }
     }
-
+    // 子弹撞到边界后反弹
     private void hitBoundary() {
         if (x < 0 || x > 780) {
             direction_X = -direction_X;
@@ -47,9 +44,7 @@ public class Bullet {
             direction_Y = -direction_Y;
         }
     }
-    public void hitHappen(){
-        HP--;
-    }
+    
     // 子弹击中方块后的反弹
     // hitPoint为0时，水平速度不变，垂直速度不变
     // hitPoint为1、2时，水平速度反转，垂直速度不变
@@ -82,11 +77,13 @@ public class Bullet {
     public double getLastX() { return lastX; }
     public double getLastY() { return lastY; }
 
+    // 根据碰撞点，调整子弹位置
     public void correctPosition(int hitPoint, Block block, int panel_X, int panel_Y) {
         double blockX = block.getCol() * block.getSize() + panel_X;
         double blockY = block.getRow() * block.getSize() + panel_Y;
         double blockSize = block.getSize();
 
+        // 调整子弹位置至方块边缘，防止子弹卡进方块
         if (hitPoint == 1) { // 上边
             y = blockY - size;
         } else if (hitPoint == 2) { // 下边
